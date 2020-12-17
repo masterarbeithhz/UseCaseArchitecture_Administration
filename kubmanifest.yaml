@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ucadministration-service
+  labels:
+    app: ucadministration
+spec:
+  selector:
+    app: ucadministration
+  ports:
+    - name: http
+      port: 80
+---
+#Definition Reverse-Proxy für einen Service
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ucadministration-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /ucadministration/(.*)
+          backend:
+            serviceName: ucadministration-service
+            servicePort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ucadministration
+  labels:
+    app: ucadministration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ucadministration
+  template:
+    metadata:
+      labels:
+        app: ucadministration
+    spec:
+      containers:
+      - name: ucadministration
+        image: JSVAR_DOCKERIMAGE
