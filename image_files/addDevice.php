@@ -6,6 +6,7 @@
 
 <body>
 	<?php
+	include('envVariables.php');
 
 	//Make sure that it is a POST request.
 	if (strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0) {
@@ -27,7 +28,7 @@
 	$dev_longitude = $obj->dev_longitude;
 
 
-	$conn = mysqli_connect("mysquc-service", "root", "Philipp1", "testdb");
+	$conn = mysqli_connect(DATABASENAME,DATABASEUSER,DATABASEPSWD,DATABASEDB);
 
 	if ($conn->connect_error) {
 		die("ERROR: Unable to connect: " . $conn->connect_error);

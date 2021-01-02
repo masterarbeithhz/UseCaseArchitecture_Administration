@@ -1,13 +1,7 @@
 <?php
-
+include('envVariables.php');
 session_start();
-
-$host = "localhost"; /* Host name */
-$user = "root"; /* User */
-$password = ""; /* Password */
-$dbname = "tutorial"; /* Database name */
-$con = mysqli_connect("mysquc-service","root","Philipp1","testdb");
-#$con = mysqli_connect($host, $user, $password,$dbname);
+$con = mysqli_connect(DATABASENAME,DATABASEUSER,DATABASEPSWD,DATABASEDB);
 // Check connection
 if (!$con) {
  die("Connection failed: " . mysqli_connect_error());

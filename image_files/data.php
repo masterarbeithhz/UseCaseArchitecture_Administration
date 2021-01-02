@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json');
+include('envVariables.php');
 
-$conn = mysqli_connect("mysquc-service","root","Philipp1","testdb");
-//$conn = mysqli_connect("localhost","root","philipp","testdb");
+$conn = mysqli_connect(DATABASENAME,DATABASEUSER,DATABASEPSWD,DATABASEDB);
 
 $sqlQuery_devices = "SELECT * FROM devices ORDER BY dev_id";
 $result_devices = mysqli_query($conn,$sqlQuery_devices);
