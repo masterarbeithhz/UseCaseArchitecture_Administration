@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-//include("envVariables.php");
+
 
 if(isset($_POST['but_submit'])){
 
@@ -17,7 +17,6 @@ if(isset($_POST['but_submit'])){
         $count = $row['cntUser'];
 
         if($count > 0){
-            session_start();	
             $_SESSION['uname'] = $uname;
             header('Location: home.php');
         }else{
