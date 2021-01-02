@@ -73,6 +73,7 @@ pipeline {
             data = data.replaceAll("JSVAR_UC_DBDB", "${env.UC_DBDB}")
             data = data.replaceAll("JSVAR_UC_DBPSWD", "${env.UC_DBPSWD}")
             data = data.replaceAll("JSVAR_UC_DOMAIN", "${env.UC_DOMAIN}")
+            data = data.replaceAll("JSVAR_NAMESPACE", "test")
             echo data
             writeFile file: "kubmanifest.yaml", text: data
           }

@@ -1,9 +1,16 @@
+#Definition Namespace für alle Ressourcen
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: JSVAR_NAMESPACE
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ucadministration
   labels:
     app: ucadministration
+  namespace: JSVAR_NAMESPACE
 spec:
   replicas: 1
   selector:
@@ -35,6 +42,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ucadministration-service
+  namespace: JSVAR_NAMESPACE
 spec:
   type: NodePort
   selector:
@@ -48,13 +56,14 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ucadministration-ingress
+  namespace: JSVAR_NAMESPACE
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
       paths:
-        - path: /ucadministration/(.*)
+        - path: /JSVAR_NAMESPACE/ucadministration/(.*)
           backend:
             serviceName: ucadministration-service
             servicePort: 80
