@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-
+include("../envVariables.php");
 
 if(isset($_POST['but_submit'])){
 
