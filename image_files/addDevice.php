@@ -6,7 +6,7 @@
 
 <body>
 	<?php
-	include_once(dirname(__DIR__).'/config/envVariables.php');
+	include_once('config/envVariables.php');
 	
 
 	//Make sure that it is a POST request.
