@@ -18,6 +18,8 @@ spec:
       - name: ucadministration
         image: JSVAR_DOCKERIMAGE
         env:
+        - name: UC_CUSTOMER
+          value: JSVAR_UC_CUSTOMER
         - name: UC_DBNAME
           value: JSVAR_UC_DBNAME
         - name: UC_DBUSER

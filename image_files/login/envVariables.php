@@ -1,5 +1,6 @@
 <?php 
 # DATABASE CONNECTION VARIABLES
+define("CUSTOMER", getenv('UC_CUSTOMER'));
 define("DATABASENAME", getenv('UC_DBNAME'));
 define("DATABASEUSER", getenv('UC_DBUSER'));
 define("DATABASEDB", getenv('UC_DBDB'));

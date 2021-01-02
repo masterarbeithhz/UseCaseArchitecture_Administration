@@ -26,6 +26,7 @@ pipeline {
       steps {
         script {
           load "${customer_groovy}.groovy"
+          echo "${env.UC_CUSTOMER}"
           echo "${env.UC_DBNAME}"
           echo "${env.UC_DBUSER}"
           echo "${env.UC_DBDB}"
@@ -66,6 +67,7 @@ pipeline {
           script {
             def data = readFile file: "kubmanifest.yaml"
             data = data.replaceAll("JSVAR_DOCKERIMAGE", "${imagefolder}${imagetag}")
+            data = data.replaceAll("JSVAR_UC_CUSTOMER", "${env.UC_CUSTOMER}")
             data = data.replaceAll("JSVAR_UC_DBNAME", "${env.UC_DBNAME}")
             data = data.replaceAll("JSVAR_UC_DBUSER", "${env.UC_DBUSER}")
             data = data.replaceAll("JSVAR_UC_DBDB", "${env.UC_DBDB}")
