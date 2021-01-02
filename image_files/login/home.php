@@ -20,7 +20,7 @@ if (isset($_POST['but_logout'])) {
 <body>
     <h1>Homepage</h1>
     <form action="../DeviceAdministration.php">
-        <input type="submit" value="Geräteverwaltung" />
+        <input type="submit" value="../Geräteverwaltung" />
     </form>
     <form method='post' action="">
         <input type="submit" value="Logout" name="but_logout">
