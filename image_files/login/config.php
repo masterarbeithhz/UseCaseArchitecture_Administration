@@ -6,7 +6,7 @@ $host = "localhost"; /* Host name */
 $user = "root"; /* User */
 $password = ""; /* Password */
 $dbname = "tutorial"; /* Database name */
-$con = mysqli_connect("mysql-service","root","Philipp1","testdb");
+$con = mysqli_connect("mysquc-service","root","Philipp1","testdb");
 #$con = mysqli_connect($host, $user, $password,$dbname);
 // Check connection
 if (!$con) {

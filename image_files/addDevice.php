@@ -27,7 +27,7 @@
 	$dev_longitude = $obj->dev_longitude;
 
 
-	$conn = mysqli_connect("mysql-service", "root", "Philipp1", "testdb");
+	$conn = mysqli_connect("mysquc-service", "root", "Philipp1", "testdb");
 
 	if ($conn->connect_error) {
 		die("ERROR: Unable to connect: " . $conn->connect_error);
