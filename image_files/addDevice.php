@@ -6,7 +6,8 @@
 
 <body>
 	<?php
-	include(__DIR__.'/config/envVariables.php');
+	include_once(dirname(__DIR__).'/config/envVariables.php');
+	
 
 	//Make sure that it is a POST request.
 	if (strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') != 0) {
