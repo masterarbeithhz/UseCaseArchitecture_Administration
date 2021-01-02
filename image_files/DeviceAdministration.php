@@ -1,5 +1,5 @@
 ﻿<?php
-include "login/config.php";
+include("envVariables.php");
 
 // Check user login or not
 if (!isset($_SESSION['uname'])) {
