@@ -1,5 +1,5 @@
 <?php
-include('envVariables.php');
+include('/envVariables.php');
 session_start();
 $con = mysqli_connect(DATABASENAME,DATABASEUSER,DATABASEPSWD,DATABASEDB);
 // Check connection

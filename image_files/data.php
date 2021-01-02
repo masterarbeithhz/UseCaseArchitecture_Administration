@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include('envVariables.php');
+include('/envVariables.php');
 
 $conn = mysqli_connect(DATABASENAME,DATABASEUSER,DATABASEPSWD,DATABASEDB);
 
