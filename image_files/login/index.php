@@ -30,7 +30,7 @@ if(isset($_POST['but_submit'])){
 ?>
 <html>
     <head>
-        <title><?php echo UC_CUSTOMER;?></title>
+        <title><?php echo CUSTOMER;?></title>
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
