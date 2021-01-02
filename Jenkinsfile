@@ -17,7 +17,7 @@ pipeline {
 
     stage('Checkout groovy') {
       steps {
-        git url:"https://github.com/masterarbeithhz/test2.git", branch:'main'
+        git url:"https://github.com/masterarbeithhz/CustomerConfiguration.git", branch:'main'
         
       }
     }
@@ -25,13 +25,12 @@ pipeline {
     stage("Load config") {
       steps {
         script {
-          load "config.groovy"
+          load "${customer_groovy}.groovy"
           echo "${env.UC_DBNAME}"
           echo "${env.UC_DBUSER}"
           echo "${env.UC_DBDB}"
           echo "${env.UC_DBPSWD}"
           echo "${env.UC_DOMAIN}"
-          echo "${test1}"
         }
       }
     }
