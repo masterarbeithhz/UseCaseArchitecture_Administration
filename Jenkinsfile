@@ -31,7 +31,7 @@ pipeline {
           echo "${env.UC_DBDB}"
           echo "${env.UC_DBPSWD}"
           echo "${env.UC_DOMAIN}"
-          echo $test1
+          echo "${test1}"
         }
       }
     }
