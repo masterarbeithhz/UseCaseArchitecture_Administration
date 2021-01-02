@@ -15,6 +15,26 @@ pipeline {
 
   stages {
 
+    stage('Checkout groovy') {
+      steps {
+        git url:"https://github.com/masterarbeithhz/test2.git", branch:'main'
+        
+      }
+    }
+
+    stage("Load config") {
+      steps {
+        script {
+          load "config.groovy"
+          echo "${env.UC_DBNAME}"
+          echo "${env.UC_DBUSER}"
+          echo "${env.UC_DBDB}"
+          echo "${env.UC_DBPSWD}"
+          echo "${env.UC_DOMAIN}"
+        }
+      }
+    }
+
     stage('Checkout Source') {
       steps {
         git url:"${giturl}", branch:'main'
@@ -39,18 +59,7 @@ pipeline {
             }
         }
 
-      stage("test groovy") {
-        steps {
-          script {
-            load "config.groovy"
-            echo "${env.UC_DBNAME}"
-            echo "${env.UC_DBUSER}"
-            echo "${env.UC_DBDB}"
-            echo "${env.UC_DBPSWD}"
-            echo "${env.UC_DOMAIN}"
-          }
-        }
-      }
+      
 
       stage("Prepare Yaml") {
         steps {
