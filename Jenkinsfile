@@ -49,6 +49,12 @@ pipeline {
           }
         }
       }
+
+      node {
+        load "stacktest-staging.groovy"
+        echo "${env.DB_URL}"
+        echo "${env.DB_URL2}"
+      }
     
         stage('Deploy to GKE') {
             steps{
