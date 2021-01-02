@@ -39,26 +39,35 @@ pipeline {
             }
         }
 
+      stage("test groovy") {
+        steps {
+          script {
+            load "config.groovy"
+            echo "${env.UC_DBNAME}"
+            echo "${env.UC_DBUSER}"
+            echo "${env.UC_DBDB}"
+            echo "${env.UC_DBPSWD}"
+            echo "${env.UC_DOMAIN}"
+          }
+        }
+      }
+
       stage("Prepare Yaml") {
         steps {
           script {
             def data = readFile file: "kubmanifest.yaml"
             data = data.replaceAll("JSVAR_DOCKERIMAGE", "${imagefolder}${imagetag}")
+            data = data.replaceAll("JSVAR_UC_DBNAME", "${env.UC_DBNAME}")
+            data = data.replaceAll("JSVAR_UC_DBUSER", "${env.UC_DBUSER}")
+            data = data.replaceAll("JSVAR_UC_DBDB", "${env.UC_DBDB}")
+            data = data.replaceAll("JSVAR_UC_DBPSWD", "${env.UC_DBPSWD}")
+            data = data.replaceAll("JSVAR_UC_DOMAIN", "${env.UC_DOMAIN}")
             echo data
             writeFile file: "kubmanifest.yaml", text: data
           }
         }
       }
 
-      stage("test groovy") {
-        steps {
-          script {
-        load "stacktest-staging.groovy"
-        echo "${env.DB_URL}"
-        echo "${env.DB_URL2}"
-          }}
-      }
-    
         stage('Deploy to GKE') {
             steps{
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'kubmanifest.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])

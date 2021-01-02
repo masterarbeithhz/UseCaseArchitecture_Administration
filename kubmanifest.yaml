@@ -19,15 +19,15 @@ spec:
         image: JSVAR_DOCKERIMAGE
         env:
         - name: UC_DBNAME
-          value: mysquc-service
+          value: JSVAR_UC_DBNAME
         - name: UC_DBUSER
-          value: root
+          value: JSVAR_UC_DBUSER
         - name: UC_DBDB
-          value: testdb
+          value: JSVAR_UC_DBDB
         - name: UC_DBPSWD
-          value: Philipp1
+          value: JSVAR_UC_DBPSWD
         - name: UC_DOMAIN
-          value: http://hhz.regel-it.de
+          value: JSVAR_UC_DOMAIN
 ---  
 apiVersion: v1
 kind: Service
