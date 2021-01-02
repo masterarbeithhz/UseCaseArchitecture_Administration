@@ -50,7 +50,7 @@ pipeline {
         }
       }
 
-      node {
+      stage("test groovy") {
         load "stacktest-staging.groovy"
         echo "${env.DB_URL}"
         echo "${env.DB_URL2}"
